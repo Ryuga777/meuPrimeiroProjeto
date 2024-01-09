@@ -28,7 +28,7 @@ module.exports = configure(function (/* ctx */) {
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
-
+      'pinia'
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
@@ -40,7 +40,7 @@ module.exports = configure(function (/* ctx */) {
     extras: [
       // 'ionicons-v4',
       // 'mdi-v5',
-     'fontawesome-v6',
+      'fontawesome-v6',
       // 'eva-icons',
       // 'themify',
       // 'line-awesome',
@@ -91,19 +91,19 @@ module.exports = configure(function (/* ctx */) {
     framework: {
       config: {
         brand: {
-        primary: '#4caf50',
-        secondary: '#26A69A',
-        accent: '#9C27B0',
+          primary: '#4caf50',
+          secondary: '#26A69A',
+          accent: '#9C27B0',
 
-        dark: '#1d1d1d',
-        'dark-page': '#121212',
+          dark: '#1d1d1d',
+          'dark-page': '#121212',
 
-        positive: '#21BA45',
-        negative: '#C10015',
-        info: '#31CCEC',
-        warning: '#F2C037'
-      }
-    },
+          positive: '#21BA45',
+          negative: '#C10015',
+          info: '#31CCEC',
+          warning: '#F2C037'
+        }
+      },
 
       // iconSet: 'material-icons', // Quasar icon set
       // lang: 'en-US', // Quasar language pack

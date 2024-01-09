@@ -15,34 +15,34 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in localStorageData" :key="index">
+          <tr v-for="(book, index) in $store.catalog.books" :key="index">
             <td class="text-left">{{ index + 1 }}</td>
-            <td class="text-right">{{ item.bookName }}</td>
-            <td class="text-right">{{ item.bookDescription }}</td>
+            <td class="text-right">{{ book.bookName }}</td>
+            <td class="text-right">{{ book.bookDescription }}</td>
           </tr>
         </tbody>
       </q-markup-table>
     </q-card>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   </div>
 </template>
 
 <script>
-import { ref, onMounted } from 'vue'
+import { defineComponent, onMounted } from 'vue'
+import { useCatalogStore } from 'src/store/catalog.js'
 
-const localStorageData = ref([])
+export default defineComponent({
+  setup () {
+    const catalogStore = useCatalogStore()
 
-const getLocalStorageData = () => {
-  const data = []
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i)
-    const value = localStorage.getItem(key)
-    data.push(JSON.parse(value))
+    onMounted(() => {
+      catalogStore.updateCatalog()
+    })
+
+    return {
+      $store: {
+        catalog: catalogStore
+      }
+    }
   }
-  return data
-}
-
-onMounted(() => {
-  localStorageData.value = getLocalStorageData()
 })
 </script>
